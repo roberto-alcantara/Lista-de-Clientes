@@ -1,0 +1,38 @@
+<div class="row">
+	<div class="col-xs-8">
+		<button ui-sref="new" class="btn btn-default">Novo</button>
+	</div>
+	<div class="col-xs-4">
+	<form>
+	  <div class="input-group">
+	    <input type="text" ng-model="search" class="form-control" placeholder="Pesquisar">
+	    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+	  </div>
+	</form>
+	</div>
+</div>
+
+<table id="list-client" class="table table-striped">
+	<thead>
+		<tr>
+			<th>Criado em</th>
+			<th>CPF</th>
+			<th>Nome</th>
+			<th>Telefone</th>
+			<th>Ações</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="client in clients | filter:search">
+			<td>{{client.created_at | date:"dd/MM/yyyy"}}</td>
+			<td>{{client.cpf}}</td>
+			<td>{{client.nome}}</td>
+			<td>{{client.telefone}}</td>
+			<td>
+				<button ui-sref="details({clientId: {{client.id}}})" type="button" class="btn btn-info btn-sm">Detalhes</button>
+				<button ui-sref="update({clientId: {{client.id}}})" type="button" class="btn btn-warning btn-sm">Editar</button>
+				<button ng-click="excluir(client.id)" type="button" class="btn btn-danger btn-sm">Excluir</button>
+			</td>
+		</tr>
+	</tbody>
+</table>

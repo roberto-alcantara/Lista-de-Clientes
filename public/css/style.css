@@ -1,0 +1,120 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+	display: none !important;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+}
+
+a {
+	text-decoration: none !important;
+}
+
+.jumbotron h1 {
+	font-size: 40px;
+	color: #fff;
+}
+
+.jumbotron {
+	padding: 30px;
+	background-color: #777;
+}
+
+.breadcrumb {
+	background: #FFF !important;
+}
+
+#list-client {
+	margin-top: 20px;
+}
+
+#picture {
+	width: 200px;
+	height: 200px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-sizing: content-box;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 30px;
+	
+}
+
+#box-picture {
+	position: relative;
+	width: 200px;
+	height: 200px;
+}
+
+#box-picture button {
+	position: absolute;
+	left: 50%;
+}
+#box-picture #adicionar {
+	top: 50%;
+    -ms-transform: translate(-50%, -50%); /* IE 9 */
+    -webkit-transform: translate(-50%, -50%); /* Safari */
+    transform: translate(-50%, -50%);
+}
+#box-picture #editar {
+	bottom: 0;
+    -ms-transform: translate(-50%, 50%); /* IE 9 */
+    -webkit-transform: translate(-50%, 50%); /* Safari */
+    transform: translate(-50%, 50%);
+}
+
+#picture-modal {
+	width: 300px;
+	height: 300px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-sizing: content-box;
+}
+
+.buttons {
+	text-align: right;
+}
+
+.buttons button {
+	margin: 0 3px;
+}
+
+#botoes-modal {
+	margin-top: 100px;
+}
+
+.botao-modal {
+	font-weight: normal;
+	text-decoration: none;
+	color: #fff;
+	background-color: #337ab7;
+    border-color: #2e6da4;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+    border: 1px solid transparent;
+}
+
+.botao-modal:hover {
+    color: #fff;
+    background-color: #286090;
+    border-color: #204d74;
+}
+
+.atributo {
+	font-weight: bold;
+}
+
+.campo-obrigatorio {
+	color: #f00;
+	font-size: 11px;
+}
+
+#campos-obrigatorios {
+	text-align: right;
+}

@@ -1,0 +1,27 @@
+<ol class="breadcrumb">
+  <li><a ui-sref="home">Home</a></li>
+  <li class="active">Detalhes</li>
+</ol>
+
+<div>
+	<div id="picture">
+		<img accept="image/*" ng-src="{{client.foto || '//:0'}}" height="200px" />
+	</div>
+	<p><span class="atributo">CPF: </span>{{client.cpf}}</p>
+	<p><span class="atributo">Sexo: </span>{{client.sexo}}</p>
+	<p><span class="atributo">Nome: </span>{{client.nome}}</p>
+	<p><span class="atributo">Data de Nascimento: </span>{{client.data_nascimento | date: "dd/MM/yyyy"}}</p>
+	<p><span class="atributo">Email: </span>{{client.email}}</p>
+	<p><span class="atributo">Endereço: </span>{{client.endereco}}</p>
+	<p><span class="atributo">CEP: </span>{{client.cep}}</p>
+	<p><span class="atributo">Bairro: </span>{{client.bairro}}</p>
+	<p><span class="atributo">Estado: </span>{{client.uf}}</p>
+	<p><span class="atributo">Cidade: </span>{{client.cidade}}</p>
+	<p><span class="atributo">Telefone: </span>{{client.telefone}}</p>
+	<p><span class="atributo">Celular: </span>{{client.celular}}</p>
+	<p><span class="atributo">Criado em: </span>{{client.created_at | date: "dd/MM/yyyy"}}</p>
+</div>
+
+<div class="form-group">
+	<button ui-sref="home" class="btn btn-default">Voltar</button>
+</div>

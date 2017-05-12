@@ -1,0 +1,131 @@
+<ol class="breadcrumb">
+  <li><a ui-sref="home">Home</a></li>
+  <li class="active">{{formTipo}} Cliente</li>
+</ol>
+
+<form name="formCadastro">
+	<div id="campos-obrigatorios">
+		<span class="campo-obrigatorio">(*) campos obrigatórios</span>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+			<div id="box-picture">
+				<div id="picture">
+					<img accept="image/*" ng-src="{{client.foto || '//:0'}}" height="200px" />
+				</div>
+				<button ng-hide="client.foto" id="adicionar" data-toggle="modal" data-target="#modalFoto" class="btn btn-primary btn-xs">Adicionar foto</button>
+				<button ng-show="client.foto" id="editar" data-toggle="modal" data-target="#modalFoto" class="btn btn-primary btn-xs">Editar foto</button>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="row">
+				<div class="form-group col-md-8">
+				  <label for="cpf"><span class="campo-obrigatorio">* </span>CPF:</label>
+				  <input type="text" ng-model="client.cpf" class="form-control" id="cpf" name="cpf" cpf ng-required="true" validar-cpf>
+				</div>
+				<div class="form-group col-md-4">
+				  <label for="sexo"><span class="campo-obrigatorio">* </span>Sexo:</label>
+				  <select id="sexo" ng-model="client.sexo" class="form-control" name="sexo" ng-required="true">
+					  <option value="" disabled>Selecione</option>
+					  <option value="M">Masculino</option>
+					  <option value="F">Feminino</option>
+				  </select>
+				</div>
+			</div>
+			<div class="form-group">
+			  <label for="nome"><span class="campo-obrigatorio">* </span>Nome:</label>
+			  <input type="text" ng-model="client.nome" class="form-control" id="nome" name="nome" ng-required="true">
+			</div>
+			<div class="form-group">
+			  <label for="data-nasc"><span class="campo-obrigatorio">* </span>Data de Nascimento:</label>
+			  <input type="date" ng-model="client.data_nascimento" class="form-control" id="data-nasc" name="data_nascimento" date-input ng-required="true" max="9999-12-31">
+			</div>	
+		</div>
+	</div>
+
+	<div class="form-group">
+	  <label for="email"><span class="campo-obrigatorio">* </span>Email:</label>
+	  <input type="email" ng-model="client.email" class="form-control" id="email" name="email" ng-required="true">
+	</div>
+	<div class="form-group">
+	  <label for="endereco">Endereço:</label>
+	  <input type="text" ng-model="client.endereco" class="form-control" id="endereco" name="endereco">
+	</div>
+	<div class="row">
+		<div class="form-group col-md-4">
+		  <label for="cep">CEP:</label>
+		  <input type="text" ng-model="client.cep" class="form-control" id="cep" name="cep" cep>
+		</div>
+		<div class="form-group col-md-8">
+		  <label for="bairro">Bairro:</label>
+		  <input type="text" ng-model="client.bairro" class="form-control" id="bairro" name="bairro">
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-md-6">
+			<label for="estado">Estado</label>
+			<select id="estado" ng-model="client.uf" class="form-control" name="uf" ng-options="estado.uf as estado.nome for estado in estadosCidades.estados">
+		 		<option value="" disabled>Selecione</option>
+		 	</select>
+		</div>
+		<div class="form-group col-md-6">
+			<label for="cidade">Cidade</label>
+			<select id="cidade" ng-model="client.cidade" class="form-control" name="cidade" ng-options="cidade for cidade in estadosCidades.cidades[client.uf]">
+				<option value="" disabled>Selecione</option>
+		 	</select>
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-md-6">
+		  <label for="telefone">Telefone:</label>
+		  <input type="tel" ng-model="client.telefone" class="form-control" id="telefone" name="telefone" telefone>
+		</div>
+		<div class="form-group col-md-6">
+		  <label for="celular">Celular:</label>
+		  <input type="tel" ng-model="client.celular" class="form-control" id="celular" name="celular" telefone>
+		</div>
+	</div>
+	<div class="form-group buttons">
+		<button ui-sref="home" class="btn btn-danger">Cancelar</button>
+		<button ng-disabled="formCadastro.$invalid" type="submit" ng-click="salvar();" class="btn btn-success">Salvar</button>
+	</div>
+</form>
+
+  <!-- Modal Foto-->
+  <div class="modal fade" id="modalFoto" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Adicionar foto</h4>
+        </div>
+        <div class="modal-body">
+			<form id="modal-foto">
+				<div class="row">
+					<div class="col-md-7">
+						<div id="picture-modal"></div>
+					</div>
+					<div id="botoes-modal" class="col-md-5">
+						<div>
+							<label>
+								<p class="botao-modal">Escolher foto</p>
+								<input type='file' ng-model='foto' accept="image/*" base-sixty-four-input/>
+							</label>
+						</div>
+						<div>
+							<a class="botao-modal" ng-click="selecionarFoto(false)">Remover foto</a>
+						</div>
+					</div>
+				</div>
+			</form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button ng-click="selecionarFoto(true)" type="button" class="btn btn-default" data-dismiss="modal">Salvar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
