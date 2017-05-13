@@ -55,8 +55,8 @@ module.exports = (app) => {
 		var foto = obj.foto;
 		delete obj.foto;
 		obj.data_nascimento = obj.data_nascimento.slice(0, 10);
-		obj.created_at = new Date().toISOString().slice(0, 10);
-
+		obj.created_at = obj.created_at.slice(0, 10);
+		
 		values = JSON.stringify(obj).replace(/\{|\}/g,'').replace(/":/g, '=').replace(/,"/g, ', ').replace('"', '');
 
 		app.db.query('UPDATE client SET '+values+' WHERE id='+req.params.id, function(err, result) {
